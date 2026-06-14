@@ -342,8 +342,8 @@ This folder stores uploaded educational resource files.
 ### Step 1: Clone the Repository
 
     bash
-git clone https://github.com/YOUR_USERNAME/edurights-sl.git
-```
+git clone https://github.com/bensonSthomas/edurights-sl.git
+
 
 ### Step 2: Move into the Project Folder
 
