@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- ==================================================
+     EDURIGHTS SL CONTACT PAGE
+================================================== -->
+
+<section class="contact-page">
+
+    <div class="contact-container">
+
+        <!-- ==================================================
+             INTRO CONTACT CARD
+        ================================================== -->
+
+        <section class="contact-intro-card contact-reveal">
+
+            <div class="contact-intro-left">
+
+                <span class="contact-badge">
+                    Contact EduRights SL
+                </span>
+
+                <h1>
+                    Get In Touch With Us
+                </h1>
+
+                <p>
+                    Reach out to EduRights SL for platform support,
+                    educational resource inquiries, legal sharing guidance
+                    or system-related assistance.
+                </p>
+
+            </div>
+
+            <div class="contact-intro-right">
+
+                <div class="contact-support-card">
+
+                    <div class="contact-support-icon">
+                        📞
+                    </div>
+
+                    <h3>
+                        Platform Support
+                    </h3>
+
+                    <p>
+                        Available for EduRights SL inquiries.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+             CONTACT DETAILS
+        ================================================== -->
+
+        <section class="contact-section contact-reveal">
+
+            <div class="contact-section-title">
+
+                <span>
+                    Details
+                </span>
+
+                <h2>
+                    Contact Information
+                </h2>
+
+            </div>
+
+            <div class="contact-details-grid">
+
+                <article class="contact-detail-card">
+
+                    <div class="contact-detail-icon">
+                        📞
+                    </div>
+
+                    <h3>
+                        Phone Number
+                    </h3>
+
+                    <a href="tel:+23275105125">
+                        +23275105125
+                    </a>
+
+                </article>
+
+                <article class="contact-detail-card">
+
+                    <div class="contact-detail-icon">
+                        📧
+                    </div>
+
+                    <h3>
+                        Email Address
+                    </h3>
+
+                    <a href="mailto:bt8056244@gmail.com">
+                        bt8056244@gmail.com
+                    </a>
+
+                </article>
+
+                <article class="contact-detail-card">
+
+                    <div class="contact-detail-icon">
+                        📍
+                    </div>
+
+                    <h3>
+                        Address
+                    </h3>
+
+                    <p>
+                        Hill Station, Freetown
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+             SOCIAL MEDIA LINKS
+        ================================================== -->
+
+        <section class="contact-section contact-reveal">
+
+            <div class="contact-section-title">
+
+                <span>
+                    Socials
+                </span>
+
+                <h2>
+                    Connect With EduRights SL
+                </h2>
+
+            </div>
+
+            <div class="contact-social-grid">
+
+                <a href="https://facebook.com"
+                   target="_blank"
+                   class="contact-social-card">
+
+                    <div class="contact-social-icon">
+                        📘
+                    </div>
+
+                    <h3>
+                        Facebook
+                    </h3>
+
+                    <p>
+                        Visit our Facebook page.
+                    </p>
+
+                </a>
+
+                <a href="https://instagram.com"
+                   target="_blank"
+                   class="contact-social-card">
+
+                    <div class="contact-social-icon">
+                        📷
+                    </div>
+
+                    <h3>
+                        Instagram
+                    </h3>
+
+                    <p>
+                        Follow us on Instagram.
+                    </p>
+
+                </a>
+
+                <a href="https://tiktok.com"
+                   target="_blank"
+                   class="contact-social-card">
+
+                    <div class="contact-social-icon">
+                        🎵
+                    </div>
+
+                    <h3>
+                        TikTok
+                    </h3>
+
+                    <p>
+                        Watch our TikTok updates.
+                    </p>
+
+                </a>
+
+                <a href="https://linkedin.com"
+                   target="_blank"
+                   class="contact-social-card">
+
+                    <div class="contact-social-icon">
+                        💼
+                    </div>
+
+                    <h3>
+                        LinkedIn
+                    </h3>
+
+                    <p>
+                        Connect professionally.
+                    </p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+             PLATFORM RATING
+        ================================================== -->
+
+        <section class="contact-section contact-reveal">
+
+            <div class="contact-rating-card">
+
+                <div class="contact-rating-left">
+
+                    <span class="contact-rating-badge">
+                        Platform Rating
+                    </span>
+
+                    <h2>
+                        Rate Your EduRights SL Experience
+                    </h2>
+
+                    <p>
+                        Select a star rating to show how useful the
+                        platform feels to you.
+                    </p>
+
+                </div>
+
+                <div class="contact-rating-right">
+
+                    <div id="contactStars"
+                         class="contact-stars">
+
+                        <span data-rating="1">★</span>
+                        <span data-rating="2">★</span>
+                        <span data-rating="3">★</span>
+                        <span data-rating="4">★</span>
+                        <span data-rating="5">★</span>
+
+                    </div>
+
+                    <h3 id="contactRatingText">
+                        No rating selected
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ==================================================
+             CLOSING CONTACT CARD
+        ================================================== -->
+
+        <section class="contact-closing-card contact-reveal">
+
+            <h2>
+                EduRights SL
+            </h2>
+
+            <p>
+                Supporting ethical, legal and responsible educational
+                resource sharing in Sierra Leone.
+            </p>
+
+        </section>
+
+    </div>
+
+</section>
+
+<script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+
+{% endblock %}

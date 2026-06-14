@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="resource-center-page">
+
+    <div class="resource-float float-book-one">📚</div>
+    <div class="resource-float float-book-two">📄</div>
+    <div class="resource-float float-book-three">🎥</div>
+    <div class="resource-float float-book-four">⚖️</div>
+    <div class="resource-float float-book-five">🎓</div>
+
+    <section class="resource-hero">
+
+        <div class="resource-hero-copy">
+
+            <span class="resource-kicker">
+                SDG 4 Resource Center
+            </span>
+
+            <h1>
+                Educational Resource Library
+            </h1>
+
+            <p>
+                Discover legally reviewed educational materials, lecture notes,
+                videos, research content and open learning resources shared
+                responsibly through EduRights SL.
+            </p>
+
+            <div class="resource-hero-tags">
+                <span>Legal Sharing</span>
+                <span>Open Education</span>
+                <span>Admin Approved</span>
+            </div>
+
+        </div>
+
+        <div class="resource-hero-orbit">
+
+            <div class="resource-orbit-ring">
+
+                <div class="resource-orbit-item orbit-resource-one">📚</div>
+                <div class="resource-orbit-item orbit-resource-two">🎥</div>
+                <div class="resource-orbit-item orbit-resource-three">⚖️</div>
+                <div class="resource-orbit-item orbit-resource-four">🌍</div>
+
+                <div class="resource-orbit-core">
+                    <div>🛡️</div>
+                    <strong>Verified</strong>
+                    <small>Resource Access</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="resource-filter-panel">
+
+        <form method="GET" action="{{ url_for('resources') }}">
+
+            <div class="resource-filter-grid">
+
+                <div class="resource-search-box">
+
+                    <label>
+                        Search Library
+                    </label>
+
+                    <input
+                        type="text"
+                        name="search"
+                        placeholder="Search by title, topic or description..."
+                        value="{{ search }}"
+                    >
+
+                </div>
+
+                <div class="resource-search-box">
+
+                    <label>
+                        Category
+                    </label>
+
+                    <select name="category">
+
+                        <option value="">All Categories</option>
+
+                        <option value="Books" {% if category == "Books" %}selected{% endif %}>
+                            Books
+                        </option>
+
+                        <option value="Notes" {% if category == "Notes" %}selected{% endif %}>
+                            Notes
+                        </option>
+
+                        <option value="Articles" {% if category == "Articles" %}selected{% endif %}>
+                            Articles
+                        </option>
+
+                        <option value="Videos" {% if category == "Videos" %}selected{% endif %}>
+                            Videos
+                        </option>
+
+                        <option value="Research" {% if category == "Research" %}selected{% endif %}>
+                            Research
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button type="submit" class="resource-filter-btn">
+                    Filter Resources
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+    <section class="resource-library-grid">
+
+        {% for resource in resources %}
+
+            {% set extension = "" %}
+
+            {% if resource.file_name %}
+                {% set extension = resource.file_name.split('.')[-1].lower() %}
+            {% endif %}
+
+            <article
+                class="resource-card-pro"
+                id="resource-{{ resource.id }}"
+            >
+
+                <div class="resource-card-top">
+
+                    {% if extension in ['mp4', 'mov', 'avi', 'mkv', 'webm'] %}
+
+                        <div class="resource-video-frame">
+
+                            <div class="video-motion-ring"></div>
+
+                            <video
+                                controls
+                                preload="metadata"
+                                class="resource-video-player-pro"
+                            >
+                                <source src="{{ url_for('static', filename='uploads/' + resource.file_name) }}">
+                            </video>
+
+                        </div>
+
+                    {% elif extension in ['mp3', 'wav', 'aac', 'm4a'] %}
+
+                        <div class="resource-audio-frame">
+                            <div class="audio-icon">🎧</div>
+
+                            <audio controls class="resource-audio-player-pro">
+                                <source src="{{ url_for('static', filename='uploads/' + resource.file_name) }}">
+                            </audio>
+                        </div>
+
+                    {% else %}
+
+                        <div class="resource-document-frame">
+
+                            {% if resource.resource_type == "PDF" %}
+                                <div class="resource-doc-icon">📕</div>
+                            {% elif resource.resource_type == "DOCX" %}
+                                <div class="resource-doc-icon">📘</div>
+                            {% elif resource.resource_type == "PPT" %}
+                                <div class="resource-doc-icon">📙</div>
+                            {% else %}
+                                <div class="resource-doc-icon">📄</div>
+                            {% endif %}
+
+                            <span>
+                                {{ resource.resource_type or "Resource" }}
+                            </span>
+
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="resource-card-body">
+
+                    <div class="resource-status-row">
+
+                        <span class="resource-category-badge">
+                            {{ resource.category }}
+                        </span>
+
+                        {% if resource.file_name %}
+                            <span class="resource-verified-badge">
+                                File Available
+                            </span>
+                        {% else %}
+                            <span class="resource-muted-badge">
+                                No File
+                            </span>
+                        {% endif %}
+
+                    </div>
+
+                    <h3>
+                        {{ resource.title }}
+                    </h3>
+
+                    <p class="resource-description">
+                        {{ resource.description }}
+                    </p>
+
+                    <div class="resource-meta-grid">
+
+                        <div>
+                            <small>Type</small>
+                            <strong>{{ resource.resource_type }}</strong>
+                        </div>
+
+                        <div>
+                            <small>License</small>
+                            <strong>{{ resource.license_type }}</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="resource-legal-strip">
+
+                        <span>⚖️</span>
+
+                        <p>
+                            Shared through the EduRights legal resource workflow.
+                        </p>
+
+                    </div>
+
+                    <div class="resource-actions-pro">
+
+                        <a href="/resource/{{ resource.id }}"
+                           class="resource-view-btn">
+                            View Resource
+                        </a>
+
+                        {% if resource.file_name %}
+
+                            <a href="/download/{{ resource.id }}"
+                               class="resource-download-btn">
+                                Download
+                            </a>
+
+                        {% endif %}
+
+                        {% if session.get("role") == "Admin" %}
+
+                            <a href="/delete-resource/{{ resource.id }}"
+                               class="resource-delete-btn"
+                               onclick="return confirm('Are you sure you want to delete this approved resource from the library?');">
+                                Delete
+                            </a>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        {% else %}
+
+            <div class="resource-empty-state">
+
+                <div>📚</div>
+
+                <h2>
+                    No Resources Found
+                </h2>
+
+                <p>
+                    No educational resources matched your search or category filter.
+                </p>
+
+                <a href="{{ url_for('resources') }}">
+                    Clear Filters
+                </a>
+
+            </div>
+
+        {% endfor %}
+
+    </section>
+
+</section>
+<!-- =====================================
+     RESOURCE PAGE JAVASCRIPT
+===================================== -->
+
+<script src="{{ url_for('static', filename='js/resources.js') }}"></script>
+
+{% endblock %}

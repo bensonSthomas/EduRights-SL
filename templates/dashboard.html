@@ -1,0 +1,719 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- =====================================
+     EDURIGHTS SL PROFESSIONAL DASHBOARD
+     Role-aware dashboard for:
+     - Student
+     - Teacher
+     - Admin
+===================================== -->
+
+<section class="dashboard-page">
+
+    <div class="dashboard-shell">
+
+        <!-- ===============================
+             DASHBOARD HEADER
+             No hero banner, just a compact
+             professional control header.
+        =============================== -->
+
+        <div class="dashboard-header-card">
+
+            <div>
+
+                <span class="dashboard-kicker">
+                    EduRights SL Control Center
+                </span>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+                <p>
+                    Welcome, {{ session.get("full_name") }}. Manage your educational
+                    resources, compliance activity and system records from one place.
+                </p>
+
+            </div>
+
+            <div class="dashboard-role-pill">
+
+                <span>
+                    Current Role
+                </span>
+
+                <strong>
+                    {{ session.get("role") }}
+                </strong>
+
+            </div>
+
+        </div>
+
+        <!-- ===============================
+             DASHBOARD SUMMARY CARDS
+        =============================== -->
+
+        <div class="dashboard-stats-grid">
+
+            <div class="dashboard-stat-card">
+
+                <div class="dashboard-stat-icon">
+                    📚
+                </div>
+
+                <span>
+                    Recent Resources
+                </span>
+
+                <strong>
+                    {{ recent_resources|length }}
+                </strong>
+
+            </div>
+
+            <div class="dashboard-stat-card">
+
+                <div class="dashboard-stat-icon">
+                    🧾
+                </div>
+
+                <span>
+                    Audit Logs
+                </span>
+
+                <strong>
+                    {{ audit_logs|length }}
+                </strong>
+
+            </div>
+
+            <div class="dashboard-stat-card">
+
+                <div class="dashboard-stat-icon">
+                    ⚡
+                </div>
+
+                <span>
+                    Recent Activity
+                </span>
+
+                <strong>
+                    {{ recent_activity|length }}
+                </strong>
+
+            </div>
+
+            <div class="dashboard-stat-card">
+
+                <div class="dashboard-stat-icon">
+                    ⬇️
+                </div>
+
+                <span>
+                    Downloads
+                </span>
+
+                <strong>
+                    {{ download_history|length }}
+                </strong>
+
+            </div>
+
+        </div>
+
+        <!-- ===============================
+             QUICK ACTIONS
+             These change based on role.
+        =============================== -->
+
+        <div class="dashboard-section-title">
+
+            <h2>
+                Quick Actions
+            </h2>
+
+            <p>
+                Access the most important tools for your EduRights SL role.
+            </p>
+
+        </div>
+
+        <div class="dashboard-action-grid">
+
+            <!-- STUDENT / TEACHER / ADMIN: Resource Library -->
+
+            <a href="/resources" class="dashboard-action-card">
+
+                <div class="action-icon action-blue">
+                    📚
+                </div>
+
+                <h3>
+                    Resource Library
+                </h3>
+
+                <p>
+                    Browse approved educational resources shared through EduRights SL.
+                </p>
+
+                <span>
+                    Open Resources →
+                </span>
+
+            </a>
+
+            <!-- STUDENT / TEACHER / ADMIN: Legal Compliance -->
+
+            <a href="/legal-compliance" class="dashboard-action-card">
+
+                <div class="action-icon action-purple">
+                    ⚖️
+                </div>
+
+                <h3>
+                    Legal Compliance
+                </h3>
+
+                <p>
+                    Review copyright, licensing, ethical sharing and compliance guidance.
+                </p>
+
+                <span>
+                    Open Compliance →
+                </span>
+
+            </a>
+
+            <!-- TEACHER ONLY: Upload Resource -->
+
+            {% if session.get("role") == "Teacher" %}
+
+            <a href="/start-upload" class="dashboard-action-card">
+
+                <div class="action-icon action-green">
+                    ⬆️
+                </div>
+
+                <h3>
+                    Upload Resource
+                </h3>
+
+                <p>
+                    Submit educational resources for legal analysis and admin approval.
+                </p>
+
+                <span>
+                    Start Upload →
+                </span>
+
+            </a>
+
+            {% endif %}
+
+            <!-- ADMIN ONLY: Admin Approval Panel -->
+
+            {% if session.get("role") == "Admin" %}
+
+            <a href="/admin" class="dashboard-action-card">
+
+                <div class="action-icon action-amber">
+                    🛡️
+                </div>
+
+                <h3>
+                    Admin Approval Panel
+                </h3>
+
+                <p>
+                    Review uploaded resources and approve or reject submissions.
+                </p>
+
+                <span>
+                    Review Uploads →
+                </span>
+
+            </a>
+
+            <a href="/analytics" class="dashboard-action-card">
+
+                <div class="action-icon action-cyan">
+                    📊
+                </div>
+
+                <h3>
+                    Analytics
+                </h3>
+
+                <p>
+                    View platform insights, resource trends and activity summaries.
+                </p>
+
+                <span>
+                    View Analytics →
+                </span>
+
+            </a>
+
+            <a href="/audit-logs" class="dashboard-action-card">
+
+                <div class="action-icon action-dark">
+                    🧾
+                </div>
+
+                <h3>
+                    System Audit Logs
+                </h3>
+
+                <p>
+                    Monitor system actions and compliance-related activity records.
+                </p>
+
+                <span>
+                    View Logs →
+                </span>
+
+            </a>
+
+            {% endif %}
+
+            <!-- STUDENT / ADMIN: Download History -->
+
+            {% if session.get("role") == "Student" or session.get("role") == "Admin" %}
+
+            <a href="/download-history" class="dashboard-action-card">
+
+                <div class="action-icon action-green">
+                    ⬇️
+                </div>
+
+                <h3>
+                    Download History
+                </h3>
+
+                <p>
+                    View records of educational resources downloaded through the platform.
+                </p>
+
+                <span>
+                    View Downloads →
+                </span>
+
+            </a>
+
+            {% endif %}
+
+        </div>
+
+        <!-- ===============================
+             ROLE-SPECIFIC INFORMATION PANELS
+        =============================== -->
+
+        <div class="dashboard-info-grid">
+
+            <!-- ===============================
+                 RECENT RESOURCES / UPLOAD HISTORY
+            =============================== -->
+
+            <div class="dashboard-panel">
+
+                <div class="dashboard-panel-header">
+
+                    {% if session.get("role") == "Teacher" %}
+
+                        <div>
+                            <h2>
+                                Upload History
+                            </h2>
+
+                            <p>
+                                Your latest submitted resources.
+                            </p>
+                        </div>
+
+                    {% else %}
+
+                        <div>
+                            <h2>
+                                Recent Resources
+                            </h2>
+
+                            <p>
+                                Latest educational resources in the system.
+                            </p>
+                        </div>
+
+                    {% endif %}
+
+                    <span class="panel-mini-badge">
+                        Resources
+                    </span>
+
+                </div>
+
+                {% if session.get("role") == "Teacher" and teacher_uploads %}
+
+                    <div class="dashboard-list">
+
+                        {% for item in teacher_uploads %}
+
+                        <div class="dashboard-list-item">
+
+                            <div class="list-icon">
+                                📄
+                            </div>
+
+                            <div class="list-content">
+
+                                <h4>
+                                    {{ item.title }}
+                                </h4>
+
+                                <p>
+                                    {{ item.category }} • {{ item.created_at }}
+                                </p>
+
+                            </div>
+
+                            {% if item.approved == 1 %}
+
+                                <span class="dashboard-status approved">
+                                    Approved
+                                </span>
+
+                            {% elif item.approved == 2 %}
+
+                                <span class="dashboard-status rejected">
+                                    Rejected
+                                </span>
+
+                            {% else %}
+
+                                <span class="dashboard-status pending">
+                                    Pending
+                                </span>
+
+                            {% endif %}
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% elif recent_resources %}
+
+                    <div class="dashboard-list">
+
+                        {% for item in recent_resources %}
+
+                        <div class="dashboard-list-item">
+
+                            <div class="list-icon">
+                                📚
+                            </div>
+
+                            <div class="list-content">
+
+                                <h4>
+                                    {{ item.title }}
+                                </h4>
+
+                                <p>
+                                    {{ item.category }}
+                                </p>
+
+                            </div>
+
+                            {% if item.approved == 1 %}
+
+                                <span class="dashboard-status approved">
+                                    Approved
+                                </span>
+
+                            {% elif item.approved == 2 %}
+
+                                <span class="dashboard-status rejected">
+                                    Rejected
+                                </span>
+
+                            {% else %}
+
+                                <span class="dashboard-status pending">
+                                    Pending
+                                </span>
+
+                            {% endif %}
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% else %}
+
+                    <div class="dashboard-empty-state">
+
+                        <div>
+                            📚
+                        </div>
+
+                        <p>
+                            No resource records available yet.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+            <!-- ===============================
+                 RECENT ACTIVITY
+            =============================== -->
+
+            <div class="dashboard-panel">
+
+                <div class="dashboard-panel-header">
+
+                    <div>
+                        <h2>
+                            Recent Activity
+                        </h2>
+
+                        <p>
+                            Latest actions connected to your account.
+                        </p>
+                    </div>
+
+                    <span class="panel-mini-badge">
+                        Activity
+                    </span>
+
+                </div>
+
+                {% if recent_activity %}
+
+                    <div class="activity-timeline">
+
+                        {% for activity in recent_activity %}
+
+                        <div class="activity-row">
+
+                            <span class="activity-dot"></span>
+
+                            <div>
+
+                                <p>
+                                    {{ activity.action }}
+                                </p>
+
+                                <small>
+                                    {{ activity.created_at }}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% else %}
+
+                    <div class="dashboard-empty-state">
+
+                        <div>
+                            ⚡
+                        </div>
+
+                        <p>
+                            No recent activity yet.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+            <!-- ===============================
+                 DOWNLOAD HISTORY
+                 Mainly useful for students, but
+                 visible for admin if needed.
+            =============================== -->
+
+            {% if session.get("role") == "Student" or session.get("role") == "Admin" %}
+
+            <div class="dashboard-panel">
+
+                <div class="dashboard-panel-header">
+
+                    <div>
+                        <h2>
+                            Download History
+                        </h2>
+
+                        <p>
+                            Recent resources downloaded from EduRights SL.
+                        </p>
+                    </div>
+
+                    <span class="panel-mini-badge">
+                        Downloads
+                    </span>
+
+                </div>
+
+                {% if download_history %}
+
+                    <div class="dashboard-list">
+
+                        {% for download in download_history %}
+
+                        <div class="dashboard-list-item">
+
+                            <div class="list-icon">
+                                ⬇️
+                            </div>
+
+                            <div class="list-content">
+
+                                <h4>
+                                    {{ download.title }}
+                                </h4>
+
+                                <p>
+                                    Downloaded on {{ download.downloaded_at }}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% else %}
+
+                    <div class="dashboard-empty-state">
+
+                        <div>
+                            ⬇️
+                        </div>
+
+                        <p>
+                            No downloads recorded yet.
+                        </p>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+            {% endif %}
+
+                    <!-- ===============================
+                    AUDIT LOGS
+                    ADMIN ONLY
+                    =============================== -->
+
+                    {% if session.get("role") == "Admin" %}
+
+                    <div class="dashboard-panel">
+
+                    <div class="dashboard-panel-header">
+
+                    <div>
+
+                    <h2>
+                    Audit Logs
+                    </h2>
+
+                    <p>
+                    Compliance and system action records.
+                    </p>
+
+                    </div>
+
+                    <span class="panel-mini-badge">
+                    Logs
+                    </span>
+
+                    </div>
+
+                    {% if audit_logs %}
+
+                    <div class="audit-log-list">
+
+                    {% for log in audit_logs %}
+
+                    <div class="audit-log-item">
+
+                    <div class="audit-icon">
+                        🧾
+                    </div>
+
+                    <div>
+
+                        <p>
+                            {{ log.action }}
+                        </p>
+
+                        <small>
+                            {{ log.created_at }}
+                        </small>
+
+                    </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                    </div>
+
+                    <div class="mt-3">
+
+                    <a href="/audit-logs"
+                    class="btn btn-dark w-100">
+
+                    View Full Audit Logs
+
+                    </a>
+
+                    </div>
+
+                    {% else %}
+
+                    <div class="dashboard-empty-state">
+
+                    <div>
+                    🧾
+                    </div>
+
+                    <p>
+                    No audit logs available yet.
+                    </p>
+
+                    </div>
+
+                    {% endif %}
+
+                    </div>
+
+                    {% endif %}
+
+                    </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

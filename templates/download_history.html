@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- =====================================
+     DOWNLOAD HISTORY CENTER
+===================================== -->
+
+<section class="download-history-page">
+
+    <div class="download-history-shell">
+
+        <!-- ============================
+             PAGE HEADER
+        ============================ -->
+
+        <div class="download-history-header">
+
+            <div>
+
+                <span class="download-history-kicker">
+                    EduRights SL Activity Records
+                </span>
+
+                <h1>
+                    Download History Center
+                </h1>
+
+                <p>
+                    Monitor educational resources accessed through the EduRights SL platform.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ============================
+             SUMMARY CARDS
+        ============================ -->
+
+        <div class="download-summary-grid">
+
+            <div class="download-summary-card">
+
+                <div class="summary-icon">
+                    ⬇️
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Downloads
+                    </span>
+
+                    <strong>
+                        {{ history|length }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div class="download-summary-card">
+
+                <div class="summary-icon">
+                    📚
+                </div>
+
+                <div>
+
+                    <span>
+                        Resources Accessed
+                    </span>
+
+                    <strong>
+                        {{ history|length }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <div class="download-summary-card">
+
+                <div class="summary-icon">
+                    🛡️
+                </div>
+
+                <div>
+
+                    <span>
+                        Audit Tracked
+                    </span>
+
+                    <strong>
+                        Active
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ============================
+             SEARCH BAR
+        ============================ -->
+
+        <div class="download-search-card">
+
+            <input
+                type="text"
+                id="downloadSearch"
+                placeholder="Search by user, resource title or download ID..."
+            >
+
+        </div>
+
+        <!-- ============================
+             TABLE SECTION
+        ============================ -->
+
+        <div class="download-table-card">
+
+            <div class="download-table-header">
+
+                <div>
+
+                    <h2>
+                        Download Records
+                    </h2>
+
+                    <p>
+                        Complete download activity tracked by the system.
+                    </p>
+
+                </div>
+
+                <span class="table-badge">
+                    {{ history|length }} Records
+                </span>
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table
+                    class="table download-history-table"
+                    id="downloadHistoryTable"
+                >
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>User</th>
+
+                            <th>Resource</th>
+
+                            <th>Date Downloaded</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for item in history %}
+
+                        <tr>
+
+                            <td>
+                                #{{ item.id }}
+                            </td>
+
+                            <td>
+                                <span class="user-pill">
+
+                                    {{ item.full_name }}
+
+                                </span>
+                            </td>
+
+                            <td>
+
+                                <div class="resource-cell">
+
+                                    <span>
+                                        📚
+                                    </span>
+
+                                    {{ item.title }}
+
+                                </div>
+
+                            </td>
+
+                            <td>
+
+                                {{ item.downloaded_at }}
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================
+     DOWNLOAD HISTORY JAVASCRIPT
+===================================== -->
+
+<script src="{{ url_for('static', filename='js/download-history.js') }}"></script>
+
+{% endblock %}

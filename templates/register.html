@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- =====================================
+     REGISTRATION PAGE
+===================================== -->
+
+<section class="register-page">
+
+
+    <!-- Registration Container -->
+
+    
+
+        <div class="register-form-container">
+
+            <div class="register-header">
+
+                <div class="register-icon">
+                    🛡️
+                </div>
+
+                <h1>
+                    Create Your Account
+                </h1>
+
+                <p>
+                    Join EduRights SL and contribute to responsible educational
+                    resource sharing through legal and ethical compliance.
+                </p>
+
+            </div>
+
+            <form method="POST" class="register-form">
+
+                <!-- FULL NAME -->
+
+                <div class="register-group">
+
+                    <label>
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="full_name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+                <!-- EMAIL -->
+
+                <div class="register-group">
+
+                    <label>
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email address"
+                        required
+                    >
+
+                </div>
+
+                <!-- PASSWORD -->
+
+                <div class="register-group">
+
+                    <label>
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Create a secure password"
+                        required
+                    >
+
+                </div>
+
+                <!-- ROLE -->
+
+                <div class="register-group">
+
+                    <label>
+                        Account Role
+                    </label>
+
+                    <select
+                        name="role"
+                        required
+                    >
+                        <option value="">
+                            Select Role
+                        </option>
+
+                        <option value="Student">
+                            Student
+                        </option>
+
+                        <option value="Teacher">
+                            Teacher
+                        </option>
+
+                        <option value="Admin">
+                            Administrator
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- TERMS -->
+
+                <div class="register-terms">
+
+                    <input
+                        type="checkbox"
+                        id="acceptTerms"
+                        name="accept_terms"
+                        required
+                    >
+
+                    <label for="acceptTerms">
+
+                        I agree to the
+
+                        <a href="{{ url_for('terms_of_use') }}"
+                           target="_blank">
+
+                            Terms of Use
+
+                        </a>
+
+                        and
+
+                        <a href="{{ url_for('privacy_policy') }}"
+                           target="_blank">
+
+                            Privacy Policy
+
+                        </a>
+
+                    </label>
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <button
+                    type="submit"
+                    class="register-btn"
+                >
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+        </div>
+
+    
+
+</section>
+
+{% endblock %}

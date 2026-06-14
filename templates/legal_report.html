@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="legal-report-page">
+
+    <div class="legal-report-bg legal-report-bg-one"></div>
+    <div class="legal-report-bg legal-report-bg-two"></div>
+
+    <div class="legal-report-shell">
+
+        <div class="legal-report-hero">
+
+            <div>
+
+                <span class="report-kicker">
+                    EduRights Compliance Review
+                </span>
+
+                <h1>
+                    Legal Analysis Report
+                </h1>
+
+                <p>
+                    This report summarizes the legal risk assessment completed before the
+                    resource entered the admin approval workflow.
+                </p>
+
+            </div>
+
+            <div class="report-score-badge">
+
+                <span>
+                    Risk Score
+                </span>
+
+                <strong>
+                    {{ report.risk_score }}%
+                </strong>
+
+                <small>
+                    {{ report.risk_level }}
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="report-grid">
+
+            <div class="report-card main-report-card">
+
+                <div class="card-header-line">
+                    <span></span>
+                    Resource Identity
+                </div>
+
+                <h2>
+                    {{ report.title }}
+                </h2>
+
+                <div class="report-info-grid">
+
+                    <div>
+                        <small>Resource Type</small>
+                        <strong>{{ report.resource_type }}</strong>
+                    </div>
+
+                    <div>
+                        <small>File Name</small>
+                        <strong>{{ report.file_name }}</strong>
+                    </div>
+
+                    <div>
+                        <small>License Type</small>
+                        <strong>{{ report.license_type }}</strong>
+                    </div>
+
+                    <div>
+                        <small>Copyright Owner</small>
+                        <strong>{{ report.copyright_owner }}</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="report-card risk-summary-card">
+
+                <div class="risk-circle-report
+                    {% if report.risk_score <= 30 %}
+                        low-risk-circle
+                    {% elif report.risk_score <= 60 %}
+                        medium-risk-circle
+                    {% else %}
+                        high-risk-circle
+                    {% endif %}
+                ">
+
+                    <div>
+                        <strong>{{ report.risk_score }}%</strong>
+                        <span>{{ report.risk_level }}</span>
+                    </div>
+
+                </div>
+
+                <p>
+                    {{ report.recommendation }}
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="report-card compliance-card-large">
+
+            <div class="card-header-line">
+                <span></span>
+                Compliance Details
+            </div>
+
+            <div class="compliance-detail-grid">
+
+                <div>
+                    <small>Permission Status</small>
+                    <strong>{{ report.permission_status }}</strong>
+                </div>
+
+                <div>
+                    <small>Attribution Available</small>
+                    <strong>{{ report.attribution_available }}</strong>
+                </div>
+
+                <div>
+                    <small>Source Type</small>
+                    <strong>{{ report.source_type }}</strong>
+                </div>
+
+                <div>
+                    <small>Intended Use</small>
+                    <strong>{{ report.intended_use }}</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="report-card findings-card">
+
+            <div class="card-header-line">
+                <span></span>
+                Legal Findings
+            </div>
+
+            <pre>{{ report.findings }}</pre>
+
+        </div>
+
+        <div class="report-actions">
+
+            <a href="{{ url_for('admin_panel') }}" class="back-admin-btn">
+                ← Back To Admin Review
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

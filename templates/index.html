@@ -1,0 +1,311 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="home-hero">
+
+    <div class="hero-bg-glow hero-glow-one"></div>
+    <div class="hero-bg-glow hero-glow-two"></div>
+
+    <div class="floating-book book-a">📘</div>
+    <div class="floating-book book-b">📗</div>
+    <div class="floating-book book-c">📕</div>
+    <div class="floating-book book-d">📙</div>
+    <div class="floating-book book-e">📄</div>
+
+    <div class="home-hero-grid">
+
+        <div class="home-hero-copy">
+
+            <span class="home-kicker">
+                SDG 4 • Legal Education Access • Sierra Leone
+            </span>
+
+            <h1>
+                Transforming Educational Resource Sharing Through Legal Compliance
+            </h1>
+
+            <p>
+                EduRights SL helps teachers, students and institutions share educational
+                resources responsibly by combining open access, copyright awareness,
+                legal risk analysis and admin approval workflows.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="{{ url_for('resources') }}" class="hero-primary-btn">
+                    Explore Resources
+                </a>
+
+                <a href="{{ url_for('legal_compliance') }}" class="hero-secondary-btn">
+                    View Legal Framework
+                </a>
+
+            </div>
+
+            <div class="hero-trust-row">
+
+                <span>✓ Copyright-Aware</span>
+                <span>✓ SDG 4 Focused</span>
+                <span>✓ Admin Reviewed</span>
+
+            </div>
+
+        </div>
+
+        <div class="home-hero-visual">
+
+            <div class="legal-orbit">
+
+                <div class="orbit-item orbit-one">📚</div>
+                <div class="orbit-item orbit-two">⚖️</div>
+                <div class="orbit-item orbit-three">🛡️</div>
+                <div class="orbit-item orbit-four">🌍</div>
+
+                <div class="hero-core-card">
+
+                    <div class="core-icon">📘</div>
+
+                    <h3>
+                        EduRights SL
+                    </h3>
+
+                    <p>
+                        Legal Resource Sharing Engine
+                    </p>
+
+                    <div class="risk-mini">
+
+                        <span>Legal Risk</span>
+
+                        <strong>
+                            Checked
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="home-impact">
+
+    <div class="impact-card">
+        <strong>SDG 4</strong>
+        <span>Quality Education</span>
+    </div>
+
+    <div class="impact-card">
+        <strong>100%</strong>
+        <span>Legal Review Workflow</span>
+    </div>
+
+    <div class="impact-card">
+        <strong>AI</strong>
+        <span>Risk Assessment Engine</span>
+    </div>
+
+    <div class="impact-card">
+        <strong>SL</strong>
+        <span>Sierra Leone Focused</span>
+    </div>
+
+</section>
+
+<section class="home-section">
+
+    <div class="section-heading">
+
+        <span>
+            Platform Purpose
+        </span>
+
+        <h2>
+            Built for ethical educational resource sharing
+        </h2>
+
+        <p>
+            EduRights SL supports Digital Public Goods by helping institutions
+            manage educational content in a way that respects copyright,
+            licensing, attribution and access to quality education.
+        </p>
+
+    </div>
+
+    <div class="feature-grid">
+
+        <div class="home-feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>Open Educational Resources</h3>
+            <p>
+                Teachers and institutions can submit educational materials
+                for controlled sharing and academic use.
+            </p>
+        </div>
+
+        <div class="home-feature-card">
+            <div class="feature-icon">⚖️</div>
+            <h3>Legal Compliance</h3>
+            <p>
+                Every resource is checked for license, ownership,
+                permission and attribution risks.
+            </p>
+        </div>
+
+        <div class="home-feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>Legal Risk Analyzer</h3>
+            <p>
+                The system generates a risk score and recommendation before
+                a resource enters the upload workflow.
+            </p>
+        </div>
+
+        <div class="home-feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>Admin Approval</h3>
+            <p>
+                Admins review uploaded resources together with their legal
+                analysis report before approval.
+            </p>
+        </div>
+
+        <div class="home-feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Duplicate Evidence</h3>
+            <p>
+                File hashing helps detect previously analyzed resources and
+                supports stronger audit tracking.
+            </p>
+        </div>
+
+        <div class="home-feature-card">
+            <div class="feature-icon">🌍</div>
+            <h3>SDG 4 Alignment</h3>
+            <p>
+                The platform contributes to inclusive, equitable and quality
+                education through responsible digital access.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="workflow-section">
+
+    <div class="section-heading light-heading">
+
+        <span>
+            How EduRights Works
+        </span>
+
+        <h2>
+            From teacher submission to approved legal resource
+        </h2>
+
+    </div>
+
+    <div class="workflow-grid">
+
+        <div class="workflow-step">
+            <span>01</span>
+            <h3>Teacher Starts Upload</h3>
+            <p>The upload process begins through the teacher dashboard.</p>
+        </div>
+
+        <div class="workflow-step">
+            <span>02</span>
+            <h3>Legal Analyzer Runs</h3>
+            <p>The system checks permission, license, source and file evidence.</p>
+        </div>
+
+        <div class="workflow-step">
+            <span>03</span>
+            <h3>Risk Report Generated</h3>
+            <p>A legal report is saved and linked to the uploaded resource.</p>
+        </div>
+
+        <div class="workflow-step">
+            <span>04</span>
+            <h3>Admin Reviews</h3>
+            <p>Admins approve or reject based on the resource and legal report.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="sdg-showcase">
+
+    <div class="sdg-left">
+
+        <span class="sdg-badge">
+            United Nations Sustainable Development Goal
+        </span>
+
+        <h2>
+            SDG 4: Quality Education
+        </h2>
+
+        <p>
+            EduRights SL supports access to quality education by making educational
+            resources easier to share, safer to review and more legally responsible.
+        </p>
+
+        <a href="{{ url_for('resources') }}" class="hero-primary-btn">
+            Browse Educational Resources
+        </a>
+
+    </div>
+
+    <div class="sdg-card-main">
+
+        <div class="sdg-number">
+            4
+        </div>
+
+        <h3>
+            Quality Education
+        </h3>
+
+        <p>
+            Inclusive and equitable access to learning materials.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="home-cta">
+
+    <h2>
+        Build a safer future for educational resource sharing.
+    </h2>
+
+    <p>
+        EduRights SL combines education, law, technology and ethical access
+        into one practical platform for Sierra Leone.
+    </p>
+
+    <div class="hero-actions center-actions">
+
+        <a href="{{ url_for('register') }}" class="hero-primary-btn">
+            Create Account
+        </a>
+
+        <a href="{{ url_for('login') }}" class="hero-secondary-btn">
+            Login
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

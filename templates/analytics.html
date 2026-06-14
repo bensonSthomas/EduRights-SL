@@ -1,0 +1,305 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- ==================================================
+     EDURIGHTS SL - ADMIN ANALYTICS DASHBOARD
+     Purpose:
+     Displays real platform analytics for admin users.
+     No fake metrics are used.
+================================================== -->
+
+<section class="analytics-page">
+
+    <div class="analytics-shell">
+
+        <!-- ===============================
+             PAGE HEADER
+             Compact title section, not a hero.
+        =============================== -->
+
+        <div class="analytics-page-header">
+
+            <span class="analytics-kicker">
+                EduRights SL Admin Intelligence
+            </span>
+
+            <h1>
+                Admin Analytics Dashboard
+            </h1>
+
+            <p>
+                Monitor users, resources, downloads and platform distribution.
+            </p>
+
+        </div>
+
+        <!-- ===============================
+             PLATFORM OVERVIEW
+        =============================== -->
+
+        <div class="analytics-section-title">
+
+            <h2>
+                Platform Overview
+            </h2>
+
+            <p>
+                User composition across the EduRights SL system.
+            </p>
+
+        </div>
+
+        <div class="analytics-grid">
+
+            <div class="analytics-card">
+                <div class="analytics-icon">👥</div>
+                <span>Total Users</span>
+                <strong class="count-up" data-count="{{ total_users }}">0</strong>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-icon">🎓</div>
+                <span>Students</span>
+                <strong class="count-up" data-count="{{ total_students }}">0</strong>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-icon">👨‍🏫</div>
+                <span>Teachers</span>
+                <strong class="count-up" data-count="{{ total_teachers }}">0</strong>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-icon">🛡️</div>
+                <span>Admins</span>
+                <strong class="count-up" data-count="{{ total_admins }}">0</strong>
+            </div>
+
+        </div>
+
+        <!-- ===============================
+             RESOURCE PERFORMANCE
+        =============================== -->
+
+        <div class="analytics-section-title">
+
+            <h2>
+                Resource Performance
+            </h2>
+
+            <p>
+                Approval status of educational resources in the platform.
+            </p>
+
+        </div>
+
+        <div class="analytics-grid">
+
+            <div class="analytics-card">
+                <div class="analytics-icon">📚</div>
+                <span>Total Resources</span>
+                <strong class="count-up" data-count="{{ total_resources }}">0</strong>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-icon">✅</div>
+                <span>Approved</span>
+                <strong class="count-up" data-count="{{ approved_resources }}">0</strong>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-icon">⏳</div>
+                <span>Pending</span>
+                <strong class="count-up" data-count="{{ pending_resources }}">0</strong>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-icon">❌</div>
+                <span>Rejected</span>
+                <strong class="count-up" data-count="{{ rejected_resources }}">0</strong>
+            </div>
+
+        </div>
+
+        <!-- ===============================
+             PLATFORM ACTIVITY
+        =============================== -->
+
+        <div class="analytics-section-title">
+
+            <h2>
+                Platform Activity
+            </h2>
+
+            <p>
+                Download activity tracked through EduRights SL.
+            </p>
+
+        </div>
+
+        <div class="analytics-activity-card">
+
+            <div class="activity-icon-large">
+                ⬇️
+            </div>
+
+            <div>
+                <span>Total Downloads</span>
+                <strong class="count-up" data-count="{{ total_downloads }}">0</strong>
+                <p>
+                    Educational resources downloaded by platform users.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- ===============================
+             DISTRIBUTION ANALYTICS
+        =============================== -->
+
+        <div class="analytics-distribution-grid">
+
+            <!-- USER DISTRIBUTION -->
+
+            <div class="analytics-distribution-card">
+
+                <div class="distribution-header">
+
+                    <div>
+                        <h2>User Distribution</h2>
+                        <p>Percentage breakdown of user roles.</p>
+                    </div>
+
+                    <span>Users</span>
+
+                </div>
+
+                <div class="progress-row">
+
+                    <div class="progress-label">
+                        <strong>Students</strong>
+                        <span>{{ student_percentage }}%</span>
+                    </div>
+
+                    <div class="analytics-progress">
+                        <div
+                            class="analytics-progress-fill"
+                            data-width="{{ student_percentage }}">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="progress-row">
+
+                    <div class="progress-label">
+                        <strong>Teachers</strong>
+                        <span>{{ teacher_percentage }}%</span>
+                    </div>
+
+                    <div class="analytics-progress">
+                        <div
+                            class="analytics-progress-fill"
+                            data-width="{{ teacher_percentage }}">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="progress-row">
+
+                    <div class="progress-label">
+                        <strong>Admins</strong>
+                        <span>{{ admin_percentage }}%</span>
+                    </div>
+
+                    <div class="analytics-progress">
+                        <div
+                            class="analytics-progress-fill"
+                            data-width="{{ admin_percentage }}">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RESOURCE DISTRIBUTION -->
+
+            <div class="analytics-distribution-card">
+
+                <div class="distribution-header">
+
+                    <div>
+                        <h2>Resource Distribution</h2>
+                        <p>Approval status breakdown of resources.</p>
+                    </div>
+
+                    <span>Resources</span>
+
+                </div>
+
+                <div class="progress-row">
+
+                    <div class="progress-label">
+                        <strong>Approved</strong>
+                        <span>{{ approved_percentage }}%</span>
+                    </div>
+
+                    <div class="analytics-progress">
+                        <div
+                            class="analytics-progress-fill approved-fill"
+                            data-width="{{ approved_percentage }}">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="progress-row">
+
+                    <div class="progress-label">
+                        <strong>Pending</strong>
+                        <span>{{ pending_percentage }}%</span>
+                    </div>
+
+                    <div class="analytics-progress">
+                        <div
+                            class="analytics-progress-fill pending-fill"
+                            data-width="{{ pending_percentage }}">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="progress-row">
+
+                    <div class="progress-label">
+                        <strong>Rejected</strong>
+                        <span>{{ rejected_percentage }}%</span>
+                    </div>
+
+                    <div class="analytics-progress">
+                        <div
+                            class="analytics-progress-fill rejected-fill"
+                            data-width="{{ rejected_percentage }}">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==================================================
+     ANALYTICS JAVASCRIPT
+================================================== -->
+
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+
+{% endblock %}

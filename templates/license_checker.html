@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="mb-4">
+    Legal & Copyright License Checker
+</h1>
+
+<div class="card shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <form method="POST">
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    License Type
+                </label>
+
+                <select
+                    name="license_type"
+                    class="form-select"
+                    required>
+
+                    <option>MIT License</option>
+                    <option>Apache 2.0</option>
+                    <option>GPL v3</option>
+                    <option>Creative Commons</option>
+                    <option>No License</option>
+
+                </select>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Permission Status
+                </label>
+
+                <select
+                    name="permission_status"
+                    class="form-select"
+                    required>
+
+                    <option>Permission Granted</option>
+                    <option>Pending Permission</option>
+                    <option>No Permission</option>
+
+                </select>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    Copyright Owner
+                </label>
+
+                <input
+                    type="text"
+                    name="copyright_owner"
+                    class="form-control"
+                    required>
+
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-primary">
+
+                Check Legal Risk
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% if result %}
+
+<div class="alert
+
+{% if result == 'Low Risk' %}
+alert-success
+{% elif result == 'Medium Risk' %}
+alert-warning
+{% else %}
+alert-danger
+{% endif %}
+
+">
+
+    <h4>{{ result }}</h4>
+
+    <p>
+        {{ explanation }}
+    </p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

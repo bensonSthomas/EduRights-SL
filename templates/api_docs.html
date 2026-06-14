@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+        <h1>EduRights SL API Documentation</h1>
+        <p class="text-muted">
+            Open Educational Resource API for Sierra Leone
+        </p>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h3>Overview</h3>
+
+            <p>
+                The EduRights SL API provides public access to approved
+                educational resources while promoting legal and ethical
+                educational content sharing.
+            </p>
+
+            <p>
+                Data is provided in JSON format and can be integrated
+                into websites, mobile applications, digital libraries,
+                and research platforms.
+            </p>
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+
+            <h3>Base URL</h3>
+
+            <code>
+                http://127.0.0.1:5000
+            </code>
+
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+
+            <h3>Available Endpoints</h3>
+
+            <table class="table table-bordered">
+
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Endpoint</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>GET</td>
+                        <td>/api/resources</td>
+                        <td>Returns all approved resources</td>
+                    </tr>
+
+                    <tr>
+                        <td>GET</td>
+                        <td>/api/resources?category=Books</td>
+                        <td>Filter by category</td>
+                    </tr>
+
+                    <tr>
+                        <td>GET</td>
+                        <td>/api/resources?type=PDF</td>
+                        <td>Filter by resource type</td>
+                    </tr>
+
+                    <tr>
+                        <td>GET</td>
+                        <td>/api/resources?search=LAW</td>
+                        <td>Search resources by title</td>
+                    </tr>
+
+                    <tr>
+                        <td>GET</td>
+                        <td>/api/resources/1</td>
+                        <td>Return one specific resource</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+
+            <h3>Example Response</h3>
+
+<pre>
+{
+    "project": "EduRights SL",
+    "data_standard": "JSON",
+    "total_resources": 2,
+    "resources": [
+        {
+            "id": 1,
+            "title": "IT LAW LECTURES",
+            "category": "Books",
+            "resource_type": "PDF",
+            "license_type": "Creative Commons"
+        }
+    ]
+}
+</pre>
+
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-5">
+        <div class="card-body">
+
+            <h3>Digital Public Goods Alignment</h3>
+
+            <ul>
+                <li>Open educational access</li>
+                <li>Legal compliance verification</li>
+                <li>JSON open-data standard</li>
+                <li>SDG support and educational inclusion</li>
+                <li>Public API access</li>
+            </ul>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

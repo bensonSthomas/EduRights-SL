@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- =====================================
+     LOGIN PAGE
+===================================== -->
+
+<section class="login-page">
+
+<div class="login-wrapper">
+
+    <div class="login-form-container">
+
+        <!-- LOGO -->
+
+        <div class="login-header">
+
+            <div class="login-icon">
+                🛡️
+            </div>
+
+            <h1>
+                Welcome Back
+            </h1>
+
+            <p>
+                Sign in to access educational resources,
+                legal compliance tools and your EduRights dashboard.
+            </p>
+
+        </div>
+
+        <!-- LOGIN FORM -->
+
+        <form method="POST" class="login-form">
+
+            <!-- EMAIL -->
+
+            <div class="login-group">
+
+                <label>
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email address"
+                    required
+                >
+
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="login-group">
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+            <!-- BUTTON -->
+
+            <button
+                type="submit"
+                class="login-btn-submit"
+            >
+
+                Sign In
+
+            </button>
+
+        </form>
+
+        <!-- FOOT NOTE -->
+
+        <div class="login-footer-note">
+
+            Don't have an account?
+
+            <a href="{{ url_for('register') }}">
+                Create Account
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+{% endblock %}

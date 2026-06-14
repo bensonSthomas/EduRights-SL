@@ -1,0 +1,423 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- =====================================
+     UPLOAD EDUCATIONAL RESOURCE PORTAL
+     Purpose:
+     Allows teachers/admins to upload resources
+     after legal analysis has been completed.
+===================================== -->
+
+<section class="upload-resource-page">
+
+    <div class="upload-resource-shell">
+
+        <!-- ===============================
+             PAGE TITLE
+        =============================== -->
+
+        <div class="upload-page-header">
+
+            <span>
+                EduRights SL Submission Workspace
+            </span>
+
+            <h1>
+                Upload Educational Resource Portal
+            </h1>
+
+            <p>
+                Submit educational resources for ethical sharing.
+            </p>
+
+        </div>
+
+        <!-- ===============================
+             UPLOAD FORM
+        =============================== -->
+
+        <form
+            method="POST"
+            enctype="multipart/form-data"
+            class="upload-resource-form"
+        >
+
+            <!-- Hidden legal analysis ID from legal analyzer -->
+            <input
+                type="hidden"
+                name="analysis_id"
+                value="{{ analysis_id }}"
+            >
+
+            <div class="upload-resource-grid">
+
+                <!-- ===============================
+                     LEFT COLUMN
+                =============================== -->
+
+                <div class="upload-left-column">
+
+                    <!-- RESOURCE INFORMATION -->
+
+                    <div class="upload-section-card">
+
+                        <div class="upload-section-title">
+
+                            <div class="upload-section-icon">
+                                📚
+                            </div>
+
+                            <div>
+                                <h2>Resource Information</h2>
+                                <p>Basic details about the educational material.</p>
+                            </div>
+
+                        </div>
+
+                        <div class="upload-field">
+
+                            <label>Title</label>
+
+                            <input
+                                type="text"
+                                name="title"
+                                class="upload-input readiness-field"
+                                data-readiness="resource-info"
+                                placeholder="Example: Introduction to Computer Networks"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="upload-field">
+
+                            <label>Description</label>
+
+                            <textarea
+                                name="description"
+                                class="upload-input readiness-field"
+                                data-readiness="resource-info"
+                                rows="4"
+                                placeholder="Briefly describe the resource..."
+                            ></textarea>
+
+                        </div>
+
+                        <div class="upload-two-column">
+
+                            <div class="upload-field">
+
+                                <label>Category</label>
+
+                                <select
+                                    name="category"
+                                    class="upload-input readiness-field"
+                                    data-readiness="resource-info"
+                                    required
+                                >
+                                    <option value="">Select Category</option>
+                                    <option value="Books">Books</option>
+                                    <option value="Articles">Articles</option>
+                                    <option value="Videos">Videos</option>
+                                    <option value="Audio">Audio</option>
+                                    <option value="Files">Files</option>
+                                    <option value="DOCX Documents">DOCX Documents</option>
+                                    <option value="PDF Documents">PDF Documents</option>
+                                    <option value="Links">Links</option>
+                                    <option value="Research Analysis">Research Analysis</option>
+                                </select>
+
+                            </div>
+
+                            <div class="upload-field">
+
+                                <label>Resource Type</label>
+
+                                <select
+                                    name="resource_type"
+                                    class="upload-input readiness-field"
+                                    data-readiness="resource-info"
+                                    required
+                                >
+                                    <option value="">Select Type</option>
+                                    <option>PDF</option>
+                                    <option>DOCX</option>
+                                    <option>PPT</option>
+                                    <option>Video</option>
+                                    <option>Audio</option>
+                                    <option>Link</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- OWNERSHIP AND LICENSING -->
+
+                    <div class="upload-section-card">
+
+                        <div class="upload-section-title">
+
+                            <div class="upload-section-icon">
+                                ⚖️
+                            </div>
+
+                            <div>
+                                <h2>Ownership & Licensing</h2>
+                                <p>Declare ownership, license and permission status.</p>
+                            </div>
+
+                        </div>
+
+                        <div class="upload-field">
+
+                            <label>Copyright Owner</label>
+
+                            <input
+                                type="text"
+                                name="copyright_owner"
+                                class="upload-input readiness-field"
+                                data-readiness="ownership-info"
+                                placeholder="Author, institution or rights holder"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="upload-two-column">
+
+                            <div class="upload-field">
+
+                                <label>License Type</label>
+
+                                <select
+                                    name="license_type"
+                                    class="upload-input readiness-field"
+                                    data-readiness="license-selected"
+                                    required
+                                >
+                                    <option value="">Select License</option>
+                                    <option>MIT License</option>
+                                    <option>Apache 2.0</option>
+                                    <option>GPL v3</option>
+                                    <option>Creative Commons</option>
+                                    <option>No License</option>
+                                </select>
+
+                            </div>
+
+                            <div class="upload-field">
+
+                                <label>Permission Status</label>
+
+                                <select
+                                    name="permission_status"
+                                    class="upload-input readiness-field"
+                                    data-readiness="ownership-info"
+                                    required
+                                >
+                                    <option value="">Select Permission</option>
+                                    <option>Permission Granted</option>
+                                    <option>Pending Permission</option>
+                                    <option>No Permission</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- EDUCATIONAL IMPACT -->
+
+                    <div class="upload-section-card">
+
+                        <div class="upload-section-title">
+
+                            <div class="upload-section-icon">
+                                🌍
+                            </div>
+
+                            <div>
+                                <h2>Educational Impact</h2>
+                                <p>Select the SDG most aligned with this resource.</p>
+                            </div>
+
+                        </div>
+
+                        <div class="upload-field">
+
+                            <label>Sustainable Development Goal</label>
+
+                            <select
+                                name="sdg_goal"
+                                class="upload-input readiness-field"
+                                data-readiness="sdg-selected"
+                                required
+                            >
+                                <option value="">Select SDG Goal</option>
+                                <option value="SDG 1 - No Poverty">SDG 1 - No Poverty</option>
+                                <option value="SDG 2 - Zero Hunger">SDG 2 - Zero Hunger</option>
+                                <option value="SDG 3 - Good Health and Well-being">SDG 3 - Good Health and Well-being</option>
+                                <option value="SDG 4 - Quality Education" selected>SDG 4 - Quality Education</option>
+                                <option value="SDG 5 - Gender Equality">SDG 5 - Gender Equality</option>
+                                <option value="SDG 6 - Clean Water and Sanitation">SDG 6 - Clean Water and Sanitation</option>
+                                <option value="SDG 7 - Affordable and Clean Energy">SDG 7 - Affordable and Clean Energy</option>
+                                <option value="SDG 8 - Decent Work and Economic Growth">SDG 8 - Decent Work and Economic Growth</option>
+                                <option value="SDG 9 - Industry, Innovation and Infrastructure">SDG 9 - Industry, Innovation and Infrastructure</option>
+                                <option value="SDG 10 - Reduced Inequalities">SDG 10 - Reduced Inequalities</option>
+                                <option value="SDG 11 - Sustainable Cities and Communities">SDG 11 - Sustainable Cities and Communities</option>
+                                <option value="SDG 12 - Responsible Consumption and Production">SDG 12 - Responsible Consumption and Production</option>
+                                <option value="SDG 13 - Climate Action">SDG 13 - Climate Action</option>
+                                <option value="SDG 14 - Life Below Water">SDG 14 - Life Below Water</option>
+                                <option value="SDG 15 - Life on Land">SDG 15 - Life on Land</option>
+                                <option value="SDG 16 - Peace, Justice and Strong Institutions">SDG 16 - Peace, Justice and Strong Institutions</option>
+                                <option value="SDG 17 - Partnerships for the Goals">SDG 17 - Partnerships for the Goals</option>
+                            </select>
+
+                            <small>
+                                Select the Sustainable Development Goal most closely aligned with the educational impact of this resource.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ===============================
+                     RIGHT COLUMN
+                =============================== -->
+
+                <div class="upload-right-column">
+
+                    <!-- UPLOAD CENTER -->
+
+                    <div class="upload-section-card upload-sticky-card">
+
+                        <div class="upload-section-title">
+
+                            <div class="upload-section-icon">
+                                ☁️
+                            </div>
+
+                            <div>
+                                <h2>Upload Center</h2>
+                                <p>Attach the educational resource file.</p>
+                            </div>
+
+                        </div>
+
+                        <label class="upload-drop-zone" for="resourceFile">
+
+                            <div class="upload-cloud-icon">
+                                📤
+                            </div>
+
+                            <h3>
+                                Choose Resource File
+                            </h3>
+
+                            <p>
+                                PDF, DOCX, PPT, TXT, Video or Audio
+                            </p>
+
+                            <span>
+                                Browse File
+                            </span>
+
+                        </label>
+
+                        <input
+                            type="file"
+                            name="resource_file"
+                            id="resourceFile"
+                            class="upload-hidden-file readiness-field"
+                            data-readiness="file-attached"
+                            accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.mp4,.mov,.avi,.mkv,.webm,.mp3,.wav,.aac,.m4a"
+                        >
+
+                        <div
+                            class="upload-file-preview"
+                            id="uploadFilePreview"
+                        >
+                            <div class="preview-icon">
+                                📎
+                            </div>
+
+                            <div>
+                                <h4 id="previewFileName">
+                                    No file selected
+                                </h4>
+
+                                <p id="previewFileSize">
+                                    Select a file to preview details.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- SUBMISSION READINESS -->
+
+                        <div class="submission-readiness">
+
+                            <h3>
+                                Submission Readiness
+                            </h3>
+
+                            <ul>
+
+                                <li id="resource-info-check">
+                                    <span>○</span>
+                                    Resource Information Complete
+                                </li>
+
+                                <li id="ownership-info-check">
+                                    <span>○</span>
+                                    Ownership Information Complete
+                                </li>
+
+                                <li id="license-selected-check">
+                                    <span>○</span>
+                                    License Selected
+                                </li>
+
+                                <li id="sdg-selected-check">
+                                    <span>○</span>
+                                    SDG Goal Selected
+                                </li>
+
+                                <li id="file-attached-check">
+                                    <span>○</span>
+                                    File Attached
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="upload-submit-btn"
+                        >
+                            Submit Resource
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- Separate JavaScript file for upload interactions -->
+<script src="{{ url_for('static', filename='js/upload-resource.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,501 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="legal-analyzer-page">
+
+    <div class="legal-bg legal-bg-one"></div>
+    <div class="legal-bg legal-bg-two"></div>
+
+    <section class="legal-hero-panel">
+
+        <div class="legal-hero-copy">
+
+            <span class="legal-kicker">
+                Resource Compliance Intelligence
+            </span>
+
+            <h1>
+                Analyze Before You Publish
+            </h1>
+
+            <p>
+                Upload a resource, declare its ownership and license information,
+                then let EduRights generate a legal risk score before the resource
+                proceeds to the upload approval workflow.
+            </p>
+
+            <div class="legal-hero-points">
+                <span>Ownership Check</span>
+                <span>License Review</span>
+                <span>Risk Scoring</span>
+            </div>
+
+            <a href="#legalAnalyzerForm" class="legal-primary-action">
+                Start Analysis
+            </a>
+
+        </div>
+
+        <div class="legal-hero-visual">
+
+            <div class="legal-shield-ring">
+
+                <div class="legal-shield-core">
+                    🛡️
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="legal-engine-panel">
+
+        <div class="engine-copy">
+
+            <span class="engine-label">
+                100 Point Legal Risk Engine
+            </span>
+
+            <h2>
+                Real-Time Resource Risk Monitor
+            </h2>
+
+            <p>
+                The analyzer combines declared legal information with uploaded file evidence.
+                The score is calculated using a capped 100-point model, so the result can
+                never exceed 100%.
+            </p>
+
+            <div class="engine-weights">
+
+                <div>
+                    <strong>30%</strong>
+                    Permission
+                </div>
+
+                <div>
+                    <strong>25%</strong>
+                    License
+                </div>
+
+                <div>
+                    <strong>15%</strong>
+                    Attribution
+                </div>
+
+                <div>
+                    <strong>15%</strong>
+                    Source
+                </div>
+
+                <div>
+                    <strong>5%</strong>
+                    Intended Use
+                </div>
+
+                <div>
+                    <strong>10%</strong>
+                    File Evidence
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="engine-meter">
+
+            <div
+    class="risk-orbit"
+    style="
+        --risk-color: {{ risk_color or '#20C997' }};
+        --risk-angle: {{ risk_angle or 0 }}deg;
+    "
+>
+
+                <div class="risk-center">
+
+                    <h3>
+                        {% if risk_score is not none %}
+                            {{ risk_score }}%
+                        {% else %}
+                            0%
+                        {% endif %}
+                    </h3>
+
+                    <p>
+                        {% if risk_level %}
+                            {{ risk_level }}
+                        {% else %}
+                            Waiting
+                        {% endif %}
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="risk-bands">
+
+                <div class="risk-band low">
+                    Low
+                    <small>0-30%</small>
+                </div>
+
+                <div class="risk-band medium">
+                    Medium
+                    <small>31-60%</small>
+                </div>
+
+                <div class="risk-band high">
+                    High
+                    <small>61-100%</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="legalAnalyzerForm" class="legal-workspace">
+
+        <div class="legal-form-card">
+
+            <div class="form-topline">
+
+                <div>
+
+                    <span class="step-pill">
+                        Step 1
+                    </span>
+
+                    <h2>
+                        Resource Legal Analysis
+                    </h2>
+
+                    <p>
+                        Complete the profile below. The uploaded file and declared legal
+                        information will be evaluated together.
+                    </p>
+
+                </div>
+
+                <div class="analysis-state">
+                    Awaiting Submission
+                </div>
+
+            </div>
+
+            <div class="analysis-flow">
+
+                <div class="flow-step active">Legal Profile</div>
+                <div class="flow-line"></div>
+                <div class="flow-step">Risk Analysis</div>
+                <div class="flow-line"></div>
+                <div class="flow-step">Upload Approval</div>
+
+            </div>
+
+            <form method="POST" enctype="multipart/form-data" class="legal-analysis-form">
+
+                <div class="legal-form-sections">
+
+                    <div class="legal-mini-card">
+
+                        <div class="mini-card-title">
+                            Resource Information
+                        </div>
+
+                        <div class="legal-field">
+                            <label>Resource Title</label>
+                            <input type="text" name="title" placeholder="Example: Computer Networking Lecture Notes" required>
+                        </div>
+
+                        <div class="legal-field">
+                            <label>Resource Type</label>
+                            <select name="resource_type" required>
+                                <option value="">Select resource type</option>
+                                <option>PDF</option>
+                                <option>DOCX</option>
+                                <option>PPT</option>
+                                <option>Video</option>
+                                <option>Audio</option>
+                                <option>Link</option>
+                                <option>Research Analysis</option>
+                            </select>
+                        </div>
+
+                        <div class="legal-field">
+                            <label>Copyright Owner</label>
+                            <input type="text" name="copyright_owner" placeholder="Author, owner or institution">
+                        </div>
+
+                    </div>
+
+                    <div class="legal-mini-card">
+
+                        <div class="mini-card-title">
+                            Legal Ownership
+                        </div>
+
+                        <div class="legal-field">
+                            <label>License Type</label>
+                            <select name="license_type" required>
+                                <option value="">Select license type</option>
+                                <option>MIT License</option>
+                                <option>Apache 2.0</option>
+                                <option>GPL v3</option>
+                                <option>Creative Commons</option>
+                                <option>No License</option>
+                                <option>Unknown License</option>
+                            </select>
+                        </div>
+
+                        <div class="legal-field">
+                            <label>Permission Status</label>
+                            <select name="permission_status" required>
+                                <option>Permission Granted</option>
+                                <option>Pending Permission</option>
+                                <option>No Permission</option>
+                            </select>
+                        </div>
+
+                        <div class="legal-field">
+                            <label>Attribution Available</label>
+                            <select name="attribution_available" required>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="legal-mini-card wide">
+
+                        <div class="mini-card-title">
+                            Publication Assessment
+                        </div>
+
+                        <div class="legal-field">
+                            <label>Source Type</label>
+                            <select name="source_type" required>
+                                <option>Original Work</option>
+                                <option>Institution Resource</option>
+                                <option>Internet Source</option>
+                                <option>Third Party Resource</option>
+                            </select>
+                        </div>
+
+                        <div class="legal-field">
+                            <label>Intended Use</label>
+                            <select name="intended_use" required>
+                                <option>Teaching</option>
+                                <option>Research</option>
+                                <option>Public Sharing</option>
+                            </select>
+                        </div>
+
+                        <div class="legal-field full-field">
+                            <label>Upload Resource For Analysis</label>
+                            <input
+                                type="file"
+                                name="resource_file"
+                                accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.mp4,.mov,.avi,.mkv,.webm,.mp3,.wav,.aac,.m4a"
+                                required
+                            >
+                            <small>
+                                Supported formats: PDF, DOCX, PPT, TXT, MP4, WEBM, MP3, WAV and related academic files.
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="legal-actions">
+
+                    <button type="submit" class="analyze-resource-btn">
+                        Analyze Resource
+                    </button>
+
+                    <p>
+                        The system will generate a legal risk percentage, risk classification,
+                        findings and recommendation before upload submission.
+                    </p>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    {% if risk_score is not none %}
+
+    <section class="analysis-result-card {% if risk_score > 60 %}high-risk-result{% elif risk_score > 30 %}medium-risk-result{% else %}low-risk-result{% endif %}">
+
+        <div class="result-header">
+
+            <div>
+                <span class="result-kicker">
+                    Analysis Completed
+                </span>
+
+                <h2>
+                    Legal Analysis Result
+                </h2>
+            </div>
+
+            <div class="result-score">
+                {{ risk_score }}%
+            </div>
+
+        </div>
+
+        <div class="result-grid">
+
+            <div class="result-item">
+                <span>Risk Level</span>
+                <strong>{{ risk_level }}</strong>
+            </div>
+
+            <div class="result-item">
+                <span>Recommendation</span>
+                <strong>{{ recommendation }}</strong>
+            </div>
+
+        </div>
+
+        {% if findings %}
+
+        <div class="result-findings">
+
+            <h3>
+                Findings
+            </h3>
+
+            <ul>
+                {% for finding in findings %}
+                    <li>{{ finding }}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+
+        {% endif %}
+
+        {% if file_name or file_hash %}
+
+        <div class="file-evidence-card">
+
+            <h3>
+                File Evidence
+            </h3>
+
+            {% if file_name %}
+                <p><strong>File Name:</strong> {{ file_name }}</p>
+            {% endif %}
+
+            {% if file_hash %}
+                <p><strong>SHA-256 Fingerprint:</strong> {{ file_hash[:32] }}...</p>
+            {% endif %}
+
+        </div>
+
+        {% endif %}
+        <p style="color:red;font-size:20px;">
+            Analysis ID = {{ analysis_id }}
+        </p>
+        {% if analysis_id %}
+        
+        <div class="text-center mt-5">
+        
+            <div class="alert alert-success">
+        
+                <h4>
+                    Legal Analysis Completed Successfully
+                </h4>
+        
+                <p>
+                    The resource has been analyzed and a legal compliance report
+                    has been generated. Review the findings above before proceeding.
+                </p>
+        
+                <p>
+                    <strong>Analysis ID:</strong> {{ analysis_id }}
+                </p>
+        
+            </div>
+        
+            <a href="{{ url_for('upload_resource') }}?analysis_id={{ analysis_id }}"
+               class="btn btn-success btn-lg">
+        
+                Continue To Upload Resource
+        
+            </a>
+        
+        </div>
+        
+        {% endif %}
+        
+        {% endif %}
+
+    </section>
+
+    
+
+</section>
+
+{% if risk_score is not none and risk_score > 60 %}
+
+<div class="high-risk-overlay" id="highRiskOverlay">
+
+    <div class="high-risk-modal">
+
+        <div class="warning-pulse">
+            ⚠️
+        </div>
+
+        <h2>
+            High Legal Risk Detected
+        </h2>
+
+        <p>
+            This resource has been assessed as high legal risk.
+            Review ownership, permission and licensing information before continuing.
+        </p>
+
+        <button onclick="closeHighRiskAlert()">
+            I Understand
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+    window.addEventListener("load", function () {
+        const message =
+            "Warning. This resource has a high legal risk. Please review ownership, permission and license information before continuing.";
+
+        if ("speechSynthesis" in window) {
+            const speech = new SpeechSynthesisUtterance(message);
+            speech.rate = 1;
+            speech.pitch = 1;
+            speech.volume = 1;
+            window.speechSynthesis.speak(speech);
+        }
+    });
+
+    function closeHighRiskAlert() {
+        document.getElementById("highRiskOverlay").style.display = "none";
+    }
+</script>
+
+{% endif %}
+
+{% endblock %}

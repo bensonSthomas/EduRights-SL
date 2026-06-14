@@ -1,0 +1,321 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- ==================================================
+     EDURIGHTS SL
+     ADMIN RESOURCE APPROVAL WORKSPACE
+
+     Purpose:
+     Allows admins to review uploaded resources,
+     inspect legal risk information, approve resources,
+     reject resources, and open legal reports.
+================================================== -->
+
+<section class="approval-page">
+
+    <div class="approval-container">
+
+        <!-- ==========================================
+             PAGE TITLE AREA
+             Compact heading only. No hero section.
+        =========================================== -->
+
+        <div class="approval-topbar">
+
+            <div>
+
+                <h2 class="approval-title">
+                    Resource Approval Workspace
+                </h2>
+
+                <p class="approval-subtitle">
+                    Review educational resources before publication.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+             SEARCH BAR
+             JavaScript will filter table rows.
+        =========================================== -->
+
+        <div class="approval-toolbar">
+
+            <input
+                type="text"
+                id="approvalSearch"
+                class="approval-search"
+                placeholder="Search title, category, uploader, risk level or status..."
+            >
+
+        </div>
+
+        <!-- ==========================================
+             APPROVAL TABLE CARD
+        =========================================== -->
+
+        <div class="approval-card">
+
+            <div class="approval-card-header">
+
+                <h3>
+                    Pending & Reviewed Resources
+                </h3>
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table
+                    id="approvalTable"
+                    class="approval-table"
+                >
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Resource</th>
+                            <th>Uploader</th>
+                            <th>Risk</th>
+                            <th>File</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for resource in resources %}
+
+                        <tr>
+
+                            <!-- RESOURCE ID -->
+
+                            <td>
+                                #{{ resource.id }}
+                            </td>
+
+                            <!-- RESOURCE INFORMATION -->
+
+                            <td>
+
+                                <div class="approval-resource">
+
+                                    <div class="resource-mini-icon">
+
+                                        {% if resource.resource_type == "PDF" %}
+                                            📕
+                                        {% elif resource.resource_type == "DOCX" %}
+                                            📘
+                                        {% elif resource.resource_type == "PPT" %}
+                                            📙
+                                        {% elif resource.resource_type == "Video" %}
+                                            🎥
+                                        {% elif resource.resource_type == "Audio" %}
+                                            🎧
+                                        {% else %}
+                                            📄
+                                        {% endif %}
+
+                                    </div>
+
+                                    <div>
+
+                                        <strong>
+                                            {{ resource.title }}
+                                        </strong>
+
+                                        <small>
+                                            {{ resource.category }} • {{ resource.resource_type }}
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <!-- UPLOADER -->
+
+                            <td>
+
+                                <span class="approval-user">
+                                    👤 {{ resource.full_name }}
+                                </span>
+
+                            </td>
+
+                            <!-- RISK INFORMATION -->
+
+                            <td>
+
+                                <div class="risk-area">
+
+                                    <span class="risk-score">
+
+                                        {% if resource.risk_score is not none %}
+                                            {{ resource.risk_score }}%
+                                        {% else %}
+                                            N/A
+                                        {% endif %}
+
+                                    </span>
+
+                                    {% set level = resource.risk_level or "" %}
+
+                                    {% if "LOW" in level.upper() %}
+
+                                        <span class="risk-low">
+                                            LOW RISK
+                                        </span>
+
+                                    {% elif "MEDIUM" in level.upper() %}
+
+                                        <span class="risk-medium">
+                                            MEDIUM RISK
+                                        </span>
+
+                                    {% elif "HIGH" in level.upper() %}
+
+                                        <span class="risk-high">
+                                            HIGH RISK
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="risk-unknown">
+                                            NOT ANALYZED
+                                        </span>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </td>
+
+                            <!-- FILE STATUS -->
+
+                            <td>
+
+                                {% if resource.file_name %}
+
+                                    <span class="file-attached">
+                                        Attached
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="file-none">
+                                        No File
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+                            <!-- APPROVAL STATUS -->
+
+                            <td>
+
+                                {% if resource.approved == 1 %}
+
+                                    <span class="status-approved">
+                                        Approved
+                                    </span>
+
+                                {% elif resource.approved == -1 %}
+
+                                    <span class="status-rejected">
+                                        Rejected
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="status-pending">
+                                        Pending
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+                            <!-- ACTION BUTTONS -->
+
+                            <td>
+
+                                <div class="approval-actions">
+
+                                    <a
+                                        href="/resource/{{ resource.id }}"
+                                        class="action-view"
+                                    >
+                                        View
+                                    </a>
+
+                                    {% if resource.analysis_id %}
+
+                                        <a
+                                            href="/legal-report/{{ resource.analysis_id }}"
+                                            class="action-report"
+                                        >
+                                            Report
+                                        </a>
+
+                                    {% endif %}
+
+                                    {% if resource.approved == 0 %}
+
+                                        <a
+                                            href="/approve-resource/{{ resource.id }}"
+                                            class="action-approve"
+                                        >
+                                            Approve
+                                        </a>
+
+                                        <a
+                                            href="/reject-resource/{{ resource.id }}"
+                                            class="action-reject"
+                                        >
+                                            Reject
+                                        </a>
+
+                                    {% else %}
+
+                                        <span class="action-muted">
+                                            No Action
+                                        </span>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==================================================
+     ADMIN APPROVAL JAVASCRIPT
+================================================== -->
+
+<script src="{{ url_for('static', filename='js/admin_approval.js') }}"></script>
+
+{% endblock %}

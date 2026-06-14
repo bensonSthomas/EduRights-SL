@@ -1,0 +1,295 @@
+{
+  "system": {
+    "name": "EduRights SL",
+    "type": "Legal-tech educational resource sharing platform",
+    "purpose": "EduRights SL helps teachers upload educational resources, allows administrators to review legal and ethical compliance, and enables students to access approved educational materials.",
+    "keywords": [
+      "edurights",
+      "system",
+      "platform",
+      "education",
+      "resource",
+      "legal tech"
+    ],
+    "answer": "EduRights SL is a legal-tech educational resource sharing platform designed to support lawful, ethical and accessible educational resource sharing. It includes teacher uploads, admin review, copyright checks, licensing information, JSON APIs, Digital Public Goods alignment and SDG-focused education access."
+  },
+
+  "software_license": {
+    "name": "MIT License",
+    "keywords": [
+      "license",
+      "mit",
+      "software license",
+      "open source license",
+      "project license"
+    ],
+    "answer": "EduRights SL uses the MIT License for the software implementation. The MIT License was selected because it is simple, widely recognised, open-source friendly and supports reuse, modification and distribution while requiring preservation of the license notice."
+  },
+
+  "why_mit_license": {
+    "keywords": [
+      "why mit",
+      "why use mit",
+      "benefit of mit",
+      "mit benefits"
+    ],
+    "answer": "The MIT License was selected for EduRights SL because it supports openness, educational innovation, reuse, modification and collaboration. It is suitable for an educational legal-tech platform because it allows other developers or institutions to adapt the system while still respecting the original license notice."
+  },
+
+  "resource_license": {
+    "keywords": [
+      "resource license",
+      "uploaded resource",
+      "creative commons",
+      "apache",
+      "gpl",
+      "no license"
+    ],
+    "answer": "EduRights SL separates the software license from the license of uploaded educational resources. The software uses the MIT License, but each uploaded resource must have its own license information such as Creative Commons, MIT, Apache 2.0, GPL, institutional permission or no license. Resources with unclear licensing should be reviewed carefully before approval."
+  },
+
+  "copyright": {
+    "keywords": [
+      "copyright",
+      "copy right",
+      "owner",
+      "ownership",
+      "author",
+      "permission",
+      "copyright compliance"
+    ],
+    "answer": "EduRights SL supports copyright compliance by requiring copyright owner information, permission status and license type when educational resources are uploaded. Resources are not immediately published. They must pass admin review before students can access them."
+  },
+
+  "ipr": {
+    "keywords": [
+      "ipr",
+      "intellectual property",
+      "intellectual property rights",
+      "creator rights",
+      "ownership rights"
+    ],
+    "answer": "EduRights SL respects Intellectual Property Rights by recording ownership information, attribution details, permission status and license information for educational resources. The system is designed to protect creators while allowing lawful educational sharing."
+  },
+
+  "it_law": {
+    "keywords": [
+      "it law",
+      "information technology law",
+      "legal framework",
+      "digital law",
+      "technology law"
+    ],
+    "answer": "EduRights SL applies IT Law principles by managing digital content responsibly, requiring user authentication, supporting admin review, recording audit logs, protecting intellectual property rights, using open standards such as JSON and exposing data through APIs for interoperability."
+  },
+
+  "electronic_records": {
+    "keywords": [
+      "electronic record",
+      "digital record",
+      "record keeping",
+      "system record"
+    ],
+    "answer": "EduRights SL treats uploaded resources, user accounts, approval decisions, audit logs and API data as electronic records. These records help support transparency, accountability and legal traceability within the system."
+  },
+
+  "platform_liability": {
+    "keywords": [
+      "liability",
+      "platform responsibility",
+      "legal responsibility",
+      "misuse"
+    ],
+    "answer": "EduRights SL reduces platform liability by preventing direct public publication of uploaded resources. Teachers submit resources, administrators review the legal and ethical information, and only approved resources become available to students."
+  },
+
+  "teacher_responsibility": {
+    "keywords": [
+      "teacher responsibility",
+      "teacher upload",
+      "teacher role",
+      "upload responsibility"
+    ],
+    "answer": "Teachers using EduRights SL are responsible for uploading educational resources with accurate title, category, copyright owner, permission status, license type and SDG information. They should not upload resources they do not have permission to share."
+  },
+
+  "admin_review": {
+    "keywords": [
+      "admin review",
+      "administrator",
+      "approve",
+      "reject",
+      "moderation",
+      "review process"
+    ],
+    "answer": "EduRights SL uses an admin review process to check uploaded resources before publication. Administrators can approve or reject resources based on copyright information, license type, permission status, ethical suitability and educational relevance."
+  },
+
+  "student_access": {
+    "keywords": [
+      "student",
+      "student access",
+      "download",
+      "approved resource",
+      "resource library"
+    ],
+    "answer": "Students can access and download only approved resources in EduRights SL. This helps ensure that students receive educational materials that have passed legal, ethical and administrative review."
+  },
+
+  "ethics": {
+    "keywords": [
+      "ethics",
+      "ethical",
+      "ethical sharing",
+      "responsible sharing",
+      "fair use"
+    ],
+    "answer": "EduRights SL promotes ethical resource sharing by requiring transparency, attribution, permission verification, admin review and responsible access to educational materials. The system discourages unauthorized copying and irresponsible distribution."
+  },
+
+  "privacy": {
+    "keywords": [
+      "privacy",
+      "personal data",
+      "data protection",
+      "user data"
+    ],
+    "answer": "EduRights SL should protect user data by collecting only necessary information, using authentication, limiting access by role and keeping sensitive user information secure. Future development can strengthen this through formal privacy policies and stronger data protection controls."
+  },
+
+  "data_accessibility": {
+    "keywords": [
+      "data accessibility",
+      "accessed",
+      "reused",
+      "reuse data",
+      "accessible data"
+    ],
+    "answer": "EduRights SL supports data accessibility by storing structured legal and resource information in reusable formats. The legal knowledge base is stored in JSON so it can be read by ChatBolt, APIs, future mobile apps, school portals or other systems."
+  },
+
+  "json": {
+    "keywords": [
+      "json",
+      "open standard",
+      "open format",
+      "data format",
+      "machine readable"
+    ],
+    "answer": "EduRights SL uses JSON as an open standard format for its legal knowledge base and API responses. JSON is human-readable, machine-readable, lightweight and widely supported, making it suitable for data accessibility and interoperability."
+  },
+
+  "xml": {
+    "keywords": [
+      "xml",
+      "future xml",
+      "xml support"
+    ],
+    "answer": "EduRights SL currently uses JSON as the primary open data format. XML can be added later as a future export format if integration with systems that require XML becomes necessary."
+  },
+
+  "api": {
+    "keywords": [
+      "api",
+      "endpoint",
+      "api endpoint",
+      "legal knowledge api",
+      "resources api"
+    ],
+    "answer": "EduRights SL supports APIs so system data can be accessed and reused by other systems. The legal knowledge base can be exposed through an endpoint such as /api/legal-knowledge, while approved resources can be exposed through resource API endpoints."
+  },
+
+  "interoperability": {
+    "keywords": [
+      "interoperability",
+      "integration",
+      "integrate",
+      "external system",
+      "other systems"
+    ],
+    "answer": "EduRights SL supports interoperability by using JSON, structured metadata and API endpoints. This allows future integration with school portals, mobile applications, university systems, digital libraries and government education platforms."
+  },
+
+  "digital_public_goods": {
+    "keywords": [
+      "digital public goods",
+      "dpg",
+      "public good",
+      "open access",
+      "open knowledge"
+    ],
+    "answer": "EduRights SL aligns with Digital Public Goods principles by promoting educational access, open standards, interoperability, transparency and responsible reuse of digital resources. Its use of JSON and open APIs supports data reuse and integration."
+  },
+
+  "sdg": {
+    "keywords": [
+      "sdg",
+      "sdg 4",
+      "quality education",
+      "sustainable development goals"
+    ],
+    "answer": "EduRights SL supports SDG 4, Quality Education, by improving access to educational resources while maintaining legal and ethical compliance. It also supports SDG 9 through digital infrastructure and SDG 16 through transparent governance and accountability."
+  },
+
+  "audit_logs": {
+    "keywords": [
+      "audit",
+      "audit logs",
+      "logging",
+      "accountability",
+      "traceability"
+    ],
+    "answer": "EduRights SL uses audit logs to record important actions such as login, upload, approval, rejection, deletion and downloads. Audit logs improve accountability, transparency and legal traceability."
+  },
+
+  "governance": {
+    "keywords": [
+      "governance",
+      "system governance",
+      "policy",
+      "controls",
+      "compliance control"
+    ],
+    "answer": "EduRights SL governance is based on controlled uploads, admin review, copyright checks, license transparency, role-based access, audit logging, JSON-based knowledge management and API-driven interoperability."
+  },
+
+  "open_standards": {
+    "keywords": [
+      "open standards",
+      "standard format",
+      "standardized",
+      "metadata"
+    ],
+    "answer": "EduRights SL uses open standards by storing knowledge and resource information in structured JSON format. This makes the data easier to access, reuse, integrate and extend in future systems."
+  },
+
+  "future_expansion": {
+    "keywords": [
+      "future",
+      "future expansion",
+      "later",
+      "planned",
+      "upgrade"
+    ],
+    "answer": "Future improvements for EduRights SL may include XML export, advanced document scanning, stronger privacy controls, integration with learning management systems, mobile app support, external API documentation and deeper legal compliance analytics."
+  },
+
+  "chatbolt_scope": {
+    "keywords": [
+      "what can you answer",
+      "scope",
+      "chatbolt",
+      "what do you do"
+    ],
+    "answer": "EduRights ChatBolt only answers questions about EduRights SL legal compliance, licensing, copyright, Intellectual Property Rights, IT Law, Digital Public Goods, SDG alignment, JSON, APIs, interoperability, ethics and system governance."
+  },
+
+  "out_of_scope": {
+    "keywords": [
+      "unrelated",
+      "general question",
+      "outside scope"
+    ],
+    "answer": "EduRights ChatBolt is limited to EduRights SL legal, ethical, licensing, IPR, IT Law, DPG, SDG, JSON, API and compliance topics. It does not answer unrelated general questions."
+  }
+}

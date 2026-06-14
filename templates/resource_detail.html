@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- ==================================================
+     RESOURCE DETAIL PAGE
+================================================== -->
+
+<section class="resource-detail-page">
+
+    <div class="resource-detail-container">
+
+        <!-- ==========================================
+             RESOURCE HEADER
+        =========================================== -->
+
+        <div class="resource-detail-card">
+
+            <div class="resource-detail-top">
+
+                <div class="resource-detail-icon">
+
+                    {% if resource.resource_type == "PDF" %}
+                        📕
+                    {% elif resource.resource_type == "DOCX" %}
+                        📘
+                    {% elif resource.resource_type == "PPT" %}
+                        📙
+                    {% elif resource.resource_type == "Video" %}
+                        🎥
+                    {% elif resource.resource_type == "Audio" %}
+                        🎧
+                    {% else %}
+                        📄
+                    {% endif %}
+
+                </div>
+
+                <div class="resource-detail-heading">
+
+                    <span class="resource-detail-label">
+                        Educational Resource
+                    </span>
+
+                    <h1>
+                        {{ resource.title }}
+                    </h1>
+
+                    <div class="resource-detail-badges">
+
+                        <span class="detail-badge type-badge">
+                            {{ resource.resource_type }}
+                        </span>
+
+                        <span class="detail-badge license-badge">
+                            {{ resource.license_type }}
+                        </span>
+
+                        <span class="detail-badge sdg-badge">
+                            {{ resource.sdg_goal }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+             DESCRIPTION
+        =========================================== -->
+
+        <div class="resource-detail-card">
+
+            <div class="resource-section-header">
+
+                <h2>
+                    Resource Description
+                </h2>
+
+            </div>
+
+            <p class="resource-description-text">
+                {{ resource.description }}
+            </p>
+
+        </div>
+
+        <!-- ==========================================
+             INFORMATION GRID
+        =========================================== -->
+
+        <div class="resource-meta-grid">
+
+            <div class="resource-meta-card">
+
+                <span>Category</span>
+
+                <strong>
+                    {{ resource.category }}
+                </strong>
+
+            </div>
+
+            <div class="resource-meta-card">
+
+                <span>License Type</span>
+
+                <strong>
+                    {{ resource.license_type }}
+                </strong>
+
+            </div>
+
+            <div class="resource-meta-card">
+
+                <span>Copyright Owner</span>
+
+                <strong>
+                    {{ resource.copyright_owner }}
+                </strong>
+
+            </div>
+
+            <div class="resource-meta-card">
+
+                <span>Permission Status</span>
+
+                <strong>
+                    {{ resource.permission_status }}
+                </strong>
+
+            </div>
+
+            <div class="resource-meta-card">
+
+                <span>SDG Goal</span>
+
+                <strong>
+                    {{ resource.sdg_goal }}
+                </strong>
+
+            </div>
+
+            <div class="resource-meta-card">
+
+                <span>Uploaded By</span>
+
+                <strong>
+                    {{ resource.full_name }}
+                </strong>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+             LEGAL NOTICE
+        =========================================== -->
+
+        <div class="resource-legal-notice">
+
+            <div class="legal-icon">
+                ⚖️
+            </div>
+
+            <div>
+
+                <h4>
+                    Legal & Ethical Sharing
+                </h4>
+
+                <p>
+                    This educational resource is managed through the
+                    EduRights SL compliance workflow and should be used
+                    according to its associated license and permission
+                    status.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+             DOWNLOAD SECTION
+        =========================================== -->
+
+        {% if resource.file_name %}
+
+        <div class="resource-download-card">
+
+            <div>
+
+                <h3>
+                    Resource File Available
+                </h3>
+
+                <p>
+                    Download the attached educational resource.
+                </p>
+
+            </div>
+
+            <a
+                href="/download/{{ resource.id }}"
+                class="resource-download-button"
+            >
+                Download Resource
+            </a>
+
+        </div>
+
+        {% else %}
+
+        <div class="resource-empty-download">
+
+            <div>
+                📂
+            </div>
+
+            <h3>
+                No Attached File
+            </h3>
+
+            <p>
+                This resource currently does not contain a downloadable file.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+<script src="{{ url_for('static', filename='js/resource_detail.js') }}"></script>
+
+{% endblock %}
