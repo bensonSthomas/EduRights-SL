@@ -547,13 +547,24 @@ Possible future improvements include:
 * More detailed analytics.
 * Cloud deployment.
 
----
+
 
 ## Developer
 
 EduRights SL was developed as an academic project focused on Digital Public Goods, educational access, responsible resource sharing, and legal compliance awareness.
 
----
+## System Screenshots
+
+## Home Page
+
+![Home Page](docs/screenshots/)
+![Resource Page](docs/screenshots/)
+![Legal Compliance Page](docs/screenshots/)
+![About Page](docs/screenshots/)
+![Contact Page](docs/screenshots/)
+![Dashboard Pages](docs/screenshots/) Amin, Teacher, Student
+![Register Page](docs/screenshots/)
+![Login Page](docs/screenshots/)
 
 ## License
 
