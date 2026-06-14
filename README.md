@@ -569,3 +569,257 @@ EduRights SL was developed as an academic project focused on Digital Public Good
 ## License
 
 This project is intended for academic and educational use and uses the MIT License.
+
+
+# Database Design and Integration
+
+## Overview
+
+EduRights SL uses a MySQL relational database to manage educational resources, user accounts, compliance reviews, system notifications, and audit tracking. The database serves as the central data repository for all platform operations and ensures secure, structured, and efficient information management.
+
+The database was designed to support the core objectives of the platform, including educational resource sharing, legal compliance monitoring, transparency, accountability, and responsible digital public goods management.
+
+---
+
+## Database Technology
+
+* Database Management System: MySQL 8.0
+* Integration Method: MySQL Connector for Python
+* Backend Framework: Flask
+* Configuration File: config.py
+* Database Export File: database/database.sql
+
+The Flask application communicates with MySQL through a dedicated database connection layer implemented in the configuration module. This architecture separates application logic from database connectivity and improves maintainability.
+
+---
+
+## Database Schema
+
+The EduRights SL database is named:
+
+edurights_sl
+
+The database consists of the following tables:
+
+### 1. users
+
+Purpose:
+
+Stores registered platform users and authentication information.
+
+Key Functions:
+
+* User registration
+* Login authentication
+* Role management
+* Profile information storage
+
+Example Data:
+
+* User ID
+* Full Name
+* Email Address
+* Password Hash
+* User Role
+
+---
+
+### 2. resources
+
+Purpose:
+
+Stores educational resources uploaded to the platform.
+
+Key Functions:
+
+* Resource cataloguing
+* Download management
+* Resource review workflow
+* Metadata storage
+
+Example Data:
+
+* Resource Title
+* Description
+* Category
+* File Name
+* Upload Date
+* Approval Status
+
+---
+
+### 3. downloads
+
+Purpose:
+
+Tracks resource downloads performed by users.
+
+Key Functions:
+
+* Download statistics
+* User activity tracking
+* Resource popularity measurement
+
+Example Data:
+
+* Download ID
+* User ID
+* Resource ID
+* Download Timestamp
+
+---
+
+### 4. legal_analyses
+
+Purpose:
+
+Stores legal review and compliance analysis information.
+
+Key Functions:
+
+* Resource legal assessment
+* Compliance monitoring
+* Risk evaluation support
+
+Example Data:
+
+* Analysis ID
+* Resource ID
+* Legal Findings
+* Compliance Result
+* Analysis Date
+
+---
+
+### 5. license_rules
+
+Purpose:
+
+Stores licensing and intellectual property guidelines used within the platform.
+
+Key Functions:
+
+* License validation
+* Copyright awareness
+* Open-source compliance support
+
+Example Data:
+
+* License Type
+* Conditions
+* Restrictions
+* Compliance Notes
+
+---
+
+### 6. notifications
+
+Purpose:
+
+Stores system-generated notifications for users.
+
+Key Functions:
+
+* User alerts
+* Compliance notifications
+* Resource status updates
+
+Example Data:
+
+* Notification Message
+* User ID
+* Notification Date
+
+---
+
+### 7. audit_logs
+
+Purpose:
+
+Maintains accountability and transparency by recording system activities.
+
+Key Functions:
+
+* Activity monitoring
+* User action tracking
+* Administrative oversight
+
+Example Data:
+
+* User ID
+* Action Performed
+* Timestamp
+* System Event Description
+
+---
+
+## Database Relationships
+
+The database follows a relational structure where records are connected through unique identifiers.
+
+Examples include:
+
+* Users can upload multiple resources.
+* Users can download multiple resources.
+* Resources can have multiple legal analyses.
+* Resources can generate multiple downloads.
+* Users can receive multiple notifications.
+* Users can generate multiple audit log entries.
+
+This design reduces data duplication and improves consistency across the platform.
+
+---
+
+## Database Security
+
+Several security measures were considered during implementation:
+
+* Passwords are stored using hashed values.
+* User authentication is handled through Flask session management.
+* SQL queries use parameterized statements to reduce SQL injection risks.
+* Administrative actions are recorded through audit logging.
+* Sensitive information is restricted to authorized users.
+
+---
+
+## Database Contribution to the Platform
+
+The database supports all major system operations including:
+
+* User authentication
+* Resource management
+* Educational content distribution
+* Legal compliance monitoring
+* Audit tracking
+* Notification management
+* Usage analytics
+
+Without the database layer, the platform would not be able to maintain persistent records or support secure educational resource sharing.
+
+---
+
+## Alignment with Digital Public Goods Principles
+
+The database architecture supports Digital Public Goods principles by enabling:
+
+* Open educational resource management
+* Transparency through audit logs
+* Responsible content governance
+* Educational accessibility
+* Sustainable information storage
+
+This contributes directly to the platform's mission of supporting equitable access to educational resources in Sierra Leone.
+
+---
+
+## SDG 4 Contribution
+
+The database plays a critical role in supporting Sustainable Development Goal 4 (Quality Education) by enabling:
+
+* Efficient educational resource storage
+* Resource discovery and retrieval
+* Learning material accessibility
+* Administrative oversight
+* Educational content governance
+
+Through these functions, the database helps improve access to quality educational resources while ensuring legal and ethical compliance.
